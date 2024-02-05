@@ -12,6 +12,17 @@ export async function checkIfRepoExists(owner: string, repo: string): Promise<bo
   }
 }
 
+export async function getComment(owner: string, repo: string, commentId: number) {
+  return await octokit.request("GET /repos/{owner}/{repo}/issues/comments/{comment_id}", {
+    owner: owner,
+    repo: repo,
+    comment_id: commentId,
+    headers: {
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+}
+
 export async function userExists(username: string) {
   try {
     const response = await octokit.rest.users.getByUsername({
