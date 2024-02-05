@@ -23,4 +23,4 @@ jobs:
         run: yarn install --mode=skip-build
 
       - name: Run Test
-        run: yarn tsx index.ts
+        run: yarn tsx src/index.ts
